@@ -34,6 +34,7 @@ The last 3–5 seconds sell the product. The layout rules are fixed; the content
 - **Pure white cleanup** (`"whites": true`) for white-background styles. Generated frames sit at ~250 grey, which looks dirty. Turn it off for colored or textured backgrounds.
 - **Virtual camera** per segment (`"zoom": [z0, z1], "cy": [c0, c1], "ramp": s`) to frame a character that was generated too small. The value at the end of one segment must equal the value at the start of the next.
 - **On twos** (`"on_twos": true`) gives a hand-drawn cadence. Optional; review it before keeping it.
-- Loudness: two-pass normalisation to -16 LUFS, true peak -1.5 dB, 48 kHz AAC.
+- Loudness: two-pass normalisation to -16 LUFS, true peak -1.5 dB, 48 kHz AAC. `finish.py` measures the result and applies a corrective gain if it is more than 1 LU off (sparse SFX-only mixes can miss).
+- Sting: optional `"sting": {"at": s, "gain_db": -6[, "file": …]}` adds a short sound on the hero shot (a synthesized bell by default).
 
 See `schemas.md § edit.json` for the full config.

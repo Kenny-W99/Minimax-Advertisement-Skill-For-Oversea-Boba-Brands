@@ -1,6 +1,6 @@
 """Frame and audio helpers for QA and relay handoffs (needs ffmpeg/ffprobe on PATH).
 
-  frames.py sheet  clip.mp4 sheet.jpg [--fps 4] [--width 150] [--cols 10]   contact sheet
+  frames.py sheet  clip.mp4 sheet.jpg [--fps 4] [--width 150] [--cols 10]   contact sheet (unused tiles are grey, not black)
   frames.py grab   clip.mp4 4.9 out.png                                     one frame at t seconds (handoff frame)
   frames.py grab   clip.mp4 100 out.png --frame                             frame number N (0-based; matches edit.json in/out)
   frames.py last   clip.mp4 out.png                                         final frame
@@ -30,7 +30,7 @@ def main(argv):
         clip, out = args[0], args[1]
         fps, width, cols = float(opt("--fps", 4)), int(opt("--width", 150)), int(opt("--cols", 10))
         n = max(1, int(info(clip)["duration"] * fps + 0.999)); rows = (n + cols - 1) // cols
-        r = run(["ffmpeg", "-v", "error", "-y", "-i", clip, "-vf", f"fps={fps},scale={width}:-1,tile={cols}x{rows}",
+        r = run(["ffmpeg", "-v", "error", "-y", "-i", clip, "-vf", f"fps={fps},scale={width}:-1,tile={cols}x{rows}:color=0x808080",
                  "-frames:v", "1", out])
         print(r.stderr or json.dumps({"sheet": out, "frames": n, "fps": fps}))
     elif cmd == "grab":

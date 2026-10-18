@@ -232,4 +232,37 @@ while True:
         img = img.convert("RGBA"); img.alpha_composite(text_layer(t)); img = img.convert("RGB")
     enc.stdin.write(img.tobytes()); n += 1
 enc.stdin.close(); enc.wait(); dec.wait()
-print(json.dumps({"saved": out, "frames": n, "seconds": round(n / FPS, 2), "size": [W, H]}))
+
+# ---------- 4. optional sound sting + loudness verification ----------
+def integrated_lufs(path):
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", path, "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
+    vals = [float(x) for x in __import__("re").findall(r"I:\s+(-?[0-9.]+) LUFS", r)]
+    return vals[-1] if vals else None
+
+sting = cfg.get("sting")   # {"at": 19.2, "gain_db": -6, "file": "chime.wav"}; without "file" a soft synthesized bell is used
+gain_fix = 0.0
+if True:   # always verify the final loudness
+    lufs = integrated_lufs(out)
+    if lufs is not None and abs(lufs + 16) > 1.0 and not sting:
+        gain_fix = -16 - lufs
+    if sting or gain_fix:
+        tmp_out = out + ".tmp.mp4"; ins = ["-i", out]
+        if sting and sting.get("file"):
+            ins += ["-i", P(sting["file"])]; src = "[1:a]"
+        elif sting:
+            bell = "+".join(f"{a}*sin(2*PI*{f}*t)*exp(-{d}*t)" for f, a, d in ((1318.5, 0.5, 2.2), (2637, 0.22, 3.5), (3951, 0.1, 5), (1975.5, 0.18, 2.8)))
+            ins += ["-f", "lavfi", "-t", "3", "-i", f"aevalsrc='{bell}|{bell}':s=48000"]; src = "[1:a]"
+        if sting:
+            ms = int(sting.get("at", max(0, n / FPS - 3)) * 1000)
+            fc = (f"{src}aformat=channel_layouts=stereo,volume={sting.get('gain_db', -6)}dB,adelay={ms}|{ms}[st];"
+                  f"[0:a][st]amix=inputs=2:duration=first:normalize=0[mx]")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", *ins, "-filter_complex", fc, "-map", "0:v", "-map", "[mx]",
+                            "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", tmp_out], check=True)
+            os.replace(tmp_out, out)
+            lufs = integrated_lufs(out); gain_fix = (-16 - lufs) if lufs is not None and abs(lufs + 16) > 1.0 else 0.0
+        if gain_fix:   # sparse SFX-only mixes can miss the target; correct with a plain gain + limiter
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", out, "-af", f"volume={gain_fix:.2f}dB,alimiter=limit=0.84",
+                            "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", tmp_out], check=True)
+            os.replace(tmp_out, out)
+print(json.dumps({"saved": out, "frames": n, "seconds": round(n / FPS, 2), "size": [W, H],
+                  "lufs": integrated_lufs(out), "gain_fix_db": round(gain_fix, 2)}))

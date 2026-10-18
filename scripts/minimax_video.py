@@ -40,6 +40,11 @@ def call(method, path, body=None):
             msg = e.read().decode()[:800]
             if e.code in (429, 500, 502, 503) and attempt < 3:
                 time.sleep(10 * (attempt + 1)); continue
+            if e.code == 422 or "1026" in msg or "sensitive" in msg.lower():
+                sys.exit(f"HTTP {e.code}: blocked by content moderation (1026 / sensitive). Rephrase neutrally: describe "
+                         "characters as 'a small cartoon character' (avoid child/kid/kindergartener/girl/boy together with "
+                         "body or touching verbs), avoid violence words (smash, hit, attack). Treat the attempt as possibly "
+                         f"billed. Details: {msg}")
             sys.exit(f"HTTP {e.code}: {msg}")
         except (urllib.error.URLError, TimeoutError) as e:
             if attempt == 3: sys.exit(f"network error: {e}")
@@ -73,7 +78,10 @@ else:
 
 t = poll(tid)
 if t.get("status") != "succeeded":
-    sys.exit(f"status {t.get('status')}: {json.dumps(t.get('error') or t)[:800]}")
+    err = json.dumps(t.get('error') or t)[:800]
+    hint = (" — content moderation: rephrase characters neutrally ('a small cartoon character'), avoid child + body/touch "
+            "wording and violence words" if ("1026" in err or "sensitive" in err.lower()) else "")
+    sys.exit(f"status {t.get('status')}: {err}{hint}")
 os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
 urllib.request.urlretrieve(t["content"]["url"], a.out)
 print(json.dumps({"saved": a.out, "task_id": tid, "usage": t.get("usage")}))

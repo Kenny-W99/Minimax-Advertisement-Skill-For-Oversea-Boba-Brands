@@ -1,6 +1,6 @@
 # QA checklist
 
-Look at the actual pixels (frames and contact sheets). Don't assume a prompt was obeyed. `scripts/frames.py sheet clip.mp4 sheet.jpg --fps 4` makes a 4-fps contact sheet; zoom in with `frames.py grab` when something looks off.
+Look at the actual pixels (frames and contact sheets). Unused tiles at the end of a contact sheet are grey padding, not black frames. Don't assume a prompt was obeyed. `scripts/frames.py sheet clip.mp4 sheet.jpg --fps 4` makes a 4-fps contact sheet; zoom in with `frames.py grab` when something looks off.
 
 ## Gate A — keyframes (before any video is generated)
 

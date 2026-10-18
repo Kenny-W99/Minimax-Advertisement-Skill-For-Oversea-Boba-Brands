@@ -41,7 +41,7 @@ The MiniMax music API is closed to new users (status 2153). Use the open-source 
 ## No music available
 
 If no track can be generated at all (quota exhausted, Space down, no built-in tool):
-1. Deliver anyway, but make the silence intentional. Extend the last SFX tail and add a short sound-design sting on the hero shot (a chime or the drink's own sound from the clips). Fade the end card's audio out rather than leaving dead air.
+1. Deliver anyway, but make the silence intentional. Add a short sting on the hero shot with `edit.json` `"sting": {"at": <seconds>, "gain_db": -6}`. Without `file`, `finish.py` synthesizes a soft bell; with `"file": "chime.wav"` it uses your own sound (e.g. the drink's own sound from a clip). Fade the end card's audio out rather than leaving dead air.
 2. Write `music_brief.json` and the exact re-run commands into `report.md` (`music3.py brief.json music.wav`, then `finish.py edit.json final.mp4` with `music` set). Adding the music later then takes one step.
 3. Flag it at the top of the report: "delivered without music".
 

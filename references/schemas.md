@@ -128,6 +128,7 @@ See `storyboard-format.md`.
 
 - `in` / `out` are frame numbers, `[in, out)`. Drop frame 0 of every segment after the first: it duplicates the previous handoff frame.
 - `accent.type`: `swoosh` (wavy underline) | `rule` (thin straight line) | `seal` (filled square stamp, color = accent) | `none`.
+- `sting` (optional): `{"at": 19.2, "gain_db": -6, "file": "chime.wav"}`; omit `file` for a synthesized bell.
 - `note.vertical: true` writes the note top-to-bottom (CJK calligraphy). `logo.y` is the top edge. `music.offset` skips the first seconds of the track. `music.envelope` is a gain curve in dB, linear between points.
 - `note`, `logo`, `brand` and `music` are optional. With `logo`, `brand` is skipped unless both are given.
 - `font` paths may be absolute; `"index"` selects a face inside .ttc collections; `"weight"` sets a variable font's weight axis (e.g. 400).

@@ -43,7 +43,7 @@ Create: `POST /v2/video_generation`
 - Query: `GET /v2/query/video_generation/{task_id}` → `task.status` ∈ `queued | running | succeeded | failed | cancelled`; the video is at `task.content.url` (time-limited, download promptly). Tasks are queryable for 7 days. Usually done in 1–4 min.
 - Output: 768P 9:16 → 768×1344, 24 fps, stereo audio at 32 kHz. A 5 s request yields 124 frames.
 - H3 always generates audio. Prompt for SFX only and add music in post.
-- Error bodies: `{"type":"error","error":{...}}`; 422 = sensitive content.
+- Error bodies: `{"type":"error","error":{...}}`; 422 / code 1026 = blocked by content moderation. In testing it was triggered by a **child character plus body or touch verbs** ("a kindergartener squeezes her head") and is likely with violence words ("smash"). Rephrase neutrally ("a small cartoon character", "taps", "pats") and resubmit. Treat a blocked attempt as possibly billed and count it against the budget. `minimax_video.py` prints this hint.
 - `MiniMax-H3-Max` is faster and cheaper (480P/768P, 5–15 s) and has `extra.prompt_expansion_mode`. It wasn't tested for this skill.
 
 Script: `scripts/minimax_video.py out.mp4 prompt.txt first.png [last.png] --res 768P --dur 5`. Use `--task <id>` to resume polling a task that was already created (no second charge).
