@@ -66,6 +66,8 @@ Keep files small and human-readable. Fields not listed are allowed.
 ```json
 {
   "inventory": ["..."], "raw_ideas": ["10+ one-liners with their technique"],
+  "spine": {"protagonist": "...", "want": "...", "obstacle": "...", "turn": "...", "payoff": "...", "plant": "where the payoff is set up on screen"},
+  "critique": [{"criticism": "...", "answer_or_fix": "..."}],
   "bridge": {"type": "rain / fall", "cause": "final chord shakes the jasmine stars loose", "travel": "blossoms rain down, camera tilts down", "arrival": "real jasmine ring on ivory; the cup drops into the centre with a thud", "k_end_needs": "jasmine ring around the cup"},
   "bar_check": {"swap_test": "fails with a competitor (good) because ...", "one_sentence_surprise": "...", "hero_image": "...", "payoff": "...", "product_role": "stage"},
   "structure": "two_act | three_act", "structure_why": "...",

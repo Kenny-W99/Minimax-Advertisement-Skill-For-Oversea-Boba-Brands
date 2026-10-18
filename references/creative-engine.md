@@ -14,6 +14,20 @@ An idea is worth making only if it passes all five:
 4. **Payoff.** The last act lands something: a twist, a reveal, a gag, a callback to the opening. "And then everything is nice" is not a payoff.
 5. **Product as engine, stage or star, not medicine.** The product causes something surprising, *is* the world, or is the character. It does not just cure a bad mood.
 
+## A journey is not a story
+
+Another real test produced "a jasmine flower rides a paper plane through pink arches and lands next to the cup". Each frame was pretty and the reviewer still rejected it: *"there's no story."* Nobody wanted anything, nothing got in the way, nothing changed, and one segment was literally "keeps flying along the arches". Its stated payoff ("the flower's destination isn't a vase, it's the tea") referred to a vase that never appeared.
+
+Every concept needs a **story spine**. Write it out as one breath:
+
+> **[Protagonist]** wants **[goal]**, but **[obstacle]**. Then **[the product causes a turn]**, and **[payoff that pays off something planted earlier]**.
+
+- **Protagonist**: someone or something we can read emotions on, like a character, a personified ingredient or a figure from the packaging. An object that only travels isn't a protagonist.
+- **Want and obstacle**: both must be visible on screen in the first act. If the obstacle is only in the brief, it doesn't exist.
+- **Turn**: caused by the product or its hook, not by coincidence.
+- **Payoff**: has to pay off something we saw earlier (plant → payoff). A reveal of something never shown isn't a payoff.
+- **No filler segments.** Every 5 s segment changes the situation: a new problem, an attempt, a failure, a discovery, an escalation. "Continues flying / keeps walking / more of the same" isn't a beat. Cut it, or make something happen.
+
 ## Category clichés (don't use as the core idea)
 
 These are what every drink ad does. Use one only as a deliberate setup you then subvert.
@@ -56,7 +70,7 @@ Generate fast and don't judge yet. Use **at least five different techniques** fr
 
 ## Step 3 — converge: shortlist 3, pitch, score
 
-For each of the 3 strongest: a **logline** (one sentence), the **hero image**, the **payoff**, and the act outline. Then score:
+For each of the 3 strongest: the **story spine** (above), a **logline** (one sentence), the **hero image**, the **payoff with its plant**, and the act outline. Then score:
 
 | Criterion | Weight | Ask |
 |---|---|---|
@@ -67,6 +81,16 @@ For each of the 3 strongest: a **logline** (one sentence), the **hero image**, t
 | Product clarity | ×1 | Is the product shown correctly and appetisingly, ending on the hero shot? |
 
 **Gates (pass/fail, not points):** causality (`Step 5`) and feasibility (one main action per 5 s; no finger work, crowds, readable text or fast juggling). If a high-scoring idea fails feasibility, **simplify its execution** before choosing a weaker idea. Fewer characters, a static cup, the camera doing the work and a slower beat are all ways to do that. Don't fall back to a cliché because it's easier.
+
+**Then play the demanding creative director.** Self-scores run high (a weak concept gave itself 4/5 everywhere). Before accepting the winner, write the three harshest honest criticisms a senior creative director would make, and answer each:
+- Does anything actually *happen*, or is it just pretty movement?
+- Who do I care about, and what do they want?
+- Is the payoff planted on screen before it pays off?
+- Would I stop scrolling for the hero image?
+- Which segment is filler?
+- Will any motion look fake? (see *Motion that reads as real*)
+
+If any criticism holds, fix the concept or take the next one. Lower any score the critique contradicts. Record the critique in `concept.json`.
 
 Record all three in `concept.json` with scores, the hero image, the payoff, and why two lost. If the winner fails any item of **the bar**, go back to Step 2.
 
@@ -107,6 +131,35 @@ Rules:
 - Put the bridge in the last segment's beats (`0–1 s` cause, `1–3.4 s` travel and transformation, `3.4–4.2 s` arrival and impact, `4.2–5 s` settle) and give it a sound (rustle, patter, a soft thud, a chime).
 
 Record it in `concept.json` as `bridge`.
+
+## Motion that reads as real (feasibility, part of the gate)
+
+Viewers forgive simple motion, but they spot fake physics instantly. That's the "AI feel". In testing, a paper plane in a photoreal scene hovered, drifted sideways, turned around for no reason and spun on landing, and the whole ad read as AI.
+
+**High-risk motions** for H3. Avoid them as the main action, or constrain them hard:
+- flying or steering objects (planes, birds, vehicles) changing direction, hovering, landing
+- rigid objects rotating or flipping (shape and text drift during rotation)
+- an object staying fixed in frame while the world slides behind it (looks like a sticker)
+- fast camera moves through structures (arches, corridors)
+- hands manipulating small things
+- several objects interacting quickly
+
+**Low-risk motions** H3 renders well:
+- cartoon character acting (squash/stretch, gestures, expressions) in illustrated styles
+- things falling, dropping, bouncing and landing
+- liquids pouring, splashing, swirling
+- petals, steam and particles drifting
+- blooming and growing
+- slow, single-direction camera moves
+
+How to de-risk a motion you need:
+- give it real physics in words: momentum, gravity, drag, contact ("glides forward in a straight line, nose slightly down, slowly losing height, never hovering, never turning around")
+- motivate every change of direction or speed with a visible cause (a gust, a bump)
+- keep it short (≤ 2 s) and in one direction
+- let the camera follow at a slightly different speed so the object moves within the frame
+- end on contact: it lands, skids a little and stops, without spinning in place
+
+**Photoreal styles expose fake physics the most.** If the story needs exaggerated or magical action, prefer an illustrated or stylised world for the story and keep photorealism for the hero shot, connected by the bridge.
 
 ## Step 5 — causality pass (mandatory)
 

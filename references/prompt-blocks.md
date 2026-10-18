@@ -51,6 +51,10 @@ Measured effect: same first frame, same 5 s → motion energy 0.58 → 2.96 (the
 
 With animals, add: "the <animal> keeps correct anatomy: its tail stays attached behind its body and swings only behind it, four legs, never touching or passing through other objects". In testing, a horse's tail swung forward into a prop twice.
 
+## PHYSICS block (for any moving object that isn't a cartoon character)
+
+> Real physics: <object> has weight and momentum. It moves forward along a smooth path in one direction, speeding up and slowing down gradually, and never hovers, floats in place, slides sideways or turns around by itself. Any change of direction has a visible cause (<a gust of wind / a bump>) and follows a gentle arc. When it lands it touches down, skids a short distance with friction and stops, without spinning in place. It keeps exactly the same shape, folds and size throughout; it never bends, morphs or rotates freely. The camera follows slightly slower than the object, so it travels across the frame rather than staying pinned at the centre.
+
 ## STYLE LIMITS block (fixes off-style effects)
 
 The style lock describes the constant look. Rules that change during the ad (e.g. "monochrome in act 1, teal washes in after the bite") belong here, written per segment.

@@ -29,6 +29,8 @@ Regenerate a failing keyframe (up to 4 rounds), then take the best and note what
 | Style | off-style effects (full-screen speed lines, photoreal fruit in an illustrated world) |
 | Fruit identity | the fruit or ingredient isn't instantly recognisable as the product's flavor |
 | Seam | the first frame doesn't continue the previous handoff frame |
+| AI feel | objects hover, drift sideways, turn around or rotate without a cause; an object stays pinned at frame centre while the world slides behind it; speed doesn't match the action; landings spin or bounce wrongly; textures or folds crawl during motion. Ask: "Would a viewer say *this looks AI*?" |
+| Story progress | the segment doesn't change the situation (filler) |
 | Bridge (last segment) | the transition is only a pull-back or dissolve; the travelling element doesn't arrive as something visible in the hero shot; the product squashes, stretches or morphs while dropping or landing |
 | Presence (last segment) | the product disappears for any frames, or a prop duplicates or jumps sides during the illustrated → photo transition |
 | Text | letters or logos appear |
