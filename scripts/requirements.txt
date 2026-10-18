@@ -1,0 +1,2 @@
+pillow>=10
+gradio_client>=1.0

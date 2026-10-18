@@ -1,0 +1,8 @@
+# secrets
+.env
+*.env
+# generated ads and caches
+ad_output/
+__pycache__/
+.venv/
+.DS_Store
