@@ -48,6 +48,15 @@ Or clone it straight into your agent's skills directory:
 git clone https://github.com/Kenny-W99/Minimax-Advertisement-Skill-For-Oversea-Boba-Brands ~/.claude/skills/minimax-boba-ads
 ```
 
+## Using it inside MiniMax Agent
+
+What we learned from real runs:
+- **Import the latest version.** Re-import from GitHub after updates; an old copy misses later rules.
+- **Don't attach another video skill in the same message.** With MiniMax's built-in *video-creator* attached as well, the agent followed that skill's format and made a 7-second landscape product clip. Ask for this skill alone, e.g. *"用 minimax-boba-ads 这个 skill 给我做一个 X 的创意广告"*.
+- **Use a strong model.** A lightweight "Flash" model skimmed the multi-step workflow and spent over an hour on one shot. Pick the most capable model available.
+- **Expect ~30–60 minutes** for a full ad at 768P. The agent should tell you its plan and an estimate at the start.
+- For the most reliable results today, run it in API mode from Claude Code or Codex (below) with your own MiniMax key.
+
 ## Quick start
 
 After installing, just ask in plain words, in any language:
